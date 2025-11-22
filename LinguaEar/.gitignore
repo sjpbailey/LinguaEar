@@ -1,0 +1,12 @@
+# Ignore Azure secrets
+Secrets.swift
+
+# Ignore Xcode user data
+*.xcuserdata/
+*.xcuserstate
+*.xcworkspace/
+.swiftpm/
+
+# Ignore build products
+DerivedData/
+build/
