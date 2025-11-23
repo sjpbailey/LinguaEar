@@ -1,72 +1,137 @@
-# BreathingBP Privacy Policy
+# LinguaEar Privacy Policy
+**Last updated: November 23, 2025**
 
-Last updated: November 13, 2025
+This Privacy Policy describes how the LinguaEar app (“the App”) handles your information.  
+LinguaEar is developed and published by **Steven Bailey** (“we”, “us”, or “our”).
 
-This Privacy Policy describes how the BreathingBP app ("the App") handles your information.  
-BreathingBP is developed and published by Steven Bailey ("we", "us", or "our").
+LinguaEar is a communication assistant that performs **speech recognition**, **text translation**, and **text-to-speech output**. The App is not a medical device and does not provide medical, legal, or professional advice.
 
-BreathingBP is a personal breathing and blood pressure companion app. It is not a medical device and does not provide medical advice, diagnosis, or treatment. Always consult your doctor about any health concerns.
+---
 
 ## 1. Data We Collect
+LinguaEar does **not** create a user account and does **not** collect or store personally identifiable information.
 
-The App may access the following data *through Apple HealthKit* (if you grant permission):
+Depending on what you choose to use in the App, the App may access:
 
-- Blood pressure (systolic and diastolic)
-- Heart rate
-- Basic HealthKit metadata (such as timestamps)
+### Microphone Audio
+- Only when you tap the “Speak” button  
+- Audio is processed **locally on the device** using Apple Speech Framework  
+- Audio is **not stored**, **not uploaded**, and **not retained**
 
-The App does **not** create a user account and does **not** directly collect any other personal information.
+### Typed or Spoken Text for Translation
+When you request a translation:
+- The text you typed or dictated is sent securely to **Microsoft Azure Translator**
+- No personal identifiers are attached  
+- We do **not** store any translation text  
+
+### Daily Usage Count
+To enforce a translation limit for the free tier:
+- The App stores a **local-only counter**
+- This data never leaves your device
+- Reinstalling the App resets the counter
+
+---
 
 ## 2. How We Use Your Data
+Your data is used *only* to:
 
-Health data read from Apple Health is used only to:
+- Convert speech to text  
+- Translate the text using Azure  
+- Speak the translated result  
+- Display phrases in the UI  
+- Enforce the daily device-based limit
 
-- Display your blood pressure and heart rate before and after breathing sessions
-- Show simple history or trends inside the App
-- Help you track your own wellness over time
+We do **not** use your data for:
+- Advertising  
+- Analytics  
+- Profiling  
+- Tracking  
 
-We do **not** use your data for advertising, profiling, or tracking.
+---
 
-## 3. Data Storage and Sharing
+## 3. Data Storage & Sharing
 
-- Your Health data is stored and managed by **Apple Health** on your device.
-- The App may cache some values **locally on your device** to show recent information.
-- **No health data is sent to our servers**, because we do not operate any backend server for this App.
-- We do **not** sell or share your health data with third parties.
+### We do **not** store:
+- Names  
+- Emails  
+- Device IDs  
+- Contacts  
+- Location  
+- Speech recordings  
+- Translation history  
 
-Apple may process data as described in Apple’s own privacy policy when you use HealthKit and iCloud.
+### We do **not** share data with:
+- Advertisers  
+- Data brokers  
+- Analytics companies  
 
-## 4. HealthKit
+### What is sent to Microsoft Azure?
+Only the text you intentionally request to be translated.  
 
-The App uses Apple’s HealthKit framework. As required by Apple:
+Azure privacy: https://privacy.microsoft.com/
 
-- The App only uses HealthKit data to provide features that are directly related to health and wellness.
-- The App does not use HealthKit data for advertising or data mining.
-- You can change Health permissions at any time in the iOS **Settings → Health → Data Access & Devices**.
+---
 
-If you revoke HealthKit permissions, some features of the App may no longer work.
+## 4. Speech Recognition & Microphone Use
+LinguaEar uses Apple’s Speech framework:
 
-## 5. Children’s Privacy
+- Microphone access is required only for live speech input  
+- Audio is processed locally  
+- No audio is kept or uploaded  
 
-BreathingBP is intended for adults. It is not directed to children under the age of 13.  
-If you believe a child has used the App and shared health data in violation of applicable law, please contact us (see Section 7).
+Disable in Settings → Privacy & Security → Microphone.
 
-## 6. Your Choices and Control
+---
 
-You can control your data in the following ways:
+## 5. Apple Watch
+The Watch app:
 
-- **Health permissions**: Grant or revoke HealthKit access in iOS Settings.
-- **Delete data from Health**: Open the Apple Health app to review and delete blood pressure or heart rate entries.
-- **Delete the App**: Removing the App from your device deletes any data stored locally by the App.  
-  (Data already stored in Apple Health must be managed from the Health app.)
+- Requests microphone access only when you tap to speak  
+- Stores no data  
+- Sends translation text securely to Azure just like the iPhone app
 
-## 7. Contact Us
+---
 
-If you have questions about this Privacy Policy or about how the App uses your data, you can contact:
+## 6. Children’s Privacy
+LinguaEar is not intended for children under 13.
 
-- **Developer:** Steven Bailey  
-- **Email:** sjpbailey1961@icloud.com
+We do not knowingly collect personal information from children.  
+Contact us if you believe improper use has occurred.
 
+---
+
+## 7. Your Choices
+You can control your data by:
+
+- Turning microphone access on/off  
+- Clearing text fields  
+- Uninstalling the App  
+- Resetting the daily usage limit by reinstalling  
+
+No personal data is stored outside your device.
+
+---
+
+## 8. Third-Party Services
+LinguaEar uses:
+
+- **Apple Speech** (on-device)
+- **Microsoft Azure Translator**
+- **Apple TTS (Text-to-Speech)**
+
+Your use of these services is governed by their policies.
+
+---
+
+## 9. Contact Us
+Developer: **Steven Bailey**  
+Email: **sjpbailey1961@icloud.com**
+
+---
+
+## 10. Changes to This Policy
+We may update this Privacy Policy from time to time.  
+Updates will be reflected by the “Last updated” date at the top.
 ## 8. Changes to This Policy
 
 We may update this Privacy Policy from time to time. If we make significant changes, we will update the "Last updated" date above and may provide additional notice inside the App or on the App Store listing.
