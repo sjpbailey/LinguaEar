@@ -19,7 +19,6 @@ struct ContentView: View {
     // UI state
     @State private var inputText: String      = ""
     @State private var translatedText: String = ""
-    @State private var isTranslating: Bool    = false
 
     // Default: You = English, They = Spanish
     @State private var fromLang: ConversationLanguage = .english
@@ -59,23 +58,6 @@ struct ContentView: View {
                         .background(Color.accentColor.opacity(0.25))
                         .clipShape(Capsule())
 
-                    // Translate button (same behavior as onSubmit)
-                    Button {
-                        translateOnWatch()
-                    } label: {
-                        if isTranslating {
-                            HStack {
-                                ProgressView()
-                                Text("Translating…")
-                            }
-                        } else {
-                            Text("Translate")
-                        }
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-                    .disabled(inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || isTranslating)
-
                     // Result
                     VStack(alignment: .leading, spacing: 4) {
                         Text("They hear")
@@ -88,7 +70,7 @@ struct ContentView: View {
                     }
                     .padding(.top, 4)
 
-                    // MARK: - Languages section moved to bottom as big tappable rows
+                    // MARK: - Languages section at bottom
 
                     Divider()
                         .padding(.vertical, 4)
@@ -190,8 +172,6 @@ struct ContentView: View {
             return
         }
 
-        isTranslating = true
-
         let fromCode = fromLang.azureCode
         let toCode   = toLang.azureCode
 
@@ -201,7 +181,6 @@ struct ContentView: View {
             to:   toCode
         ) { result in
             DispatchQueue.main.async {
-                self.isTranslating = false
                 switch result {
                 case .success(let translated):
                     self.translatedText = translated
@@ -230,6 +209,9 @@ struct ContentView: View {
         )
     }
 }
+
+// MARK: - Language picker pushed from NavigationLinks
+
 struct LanguagePickerView: View {
     @Binding var selection: ConversationLanguage
     let title: String
@@ -253,6 +235,7 @@ struct LanguagePickerView: View {
         .navigationTitle(title)
     }
 }
+
 #Preview {
     ContentView()
 }

@@ -98,7 +98,7 @@ struct WelcomeView: View {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("Quick Phrases")
                                     .font(.subheadline.bold())
-                                Text("Use the Quick Phrases section for ready-made lines in Basic, Travel, Salon, and Conversation. Pick a phrase and LinguaEar will translate and speak it in the selected language.")
+                                Text("Use the Quick Phrases section for ready-made lines in Basic, Travel, Salon, and Conversation. Pick a phrase and LinguaEar will translate and speak it in the selected language. This is at the bottom of the app.")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }

@@ -459,7 +459,7 @@ struct ContentView: View {
                                 ZStack {
                                     Circle()
                                         .fill(Color.blue)
-                                        .frame(width: 70, height: 70)
+                                        .frame(width: 80, height: 80)
                                         .shadow(radius: 4)
                                     
                                     Image(systemName: "speaker.wave.2.fill")
