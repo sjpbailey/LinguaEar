@@ -1,6 +1,6 @@
 import SwiftUI
 
-@main
+//@main
 struct LinguaEarWatchV2App: App {
     @SceneBuilder var body: some Scene {
         WindowGroup {

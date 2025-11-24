@@ -69,7 +69,6 @@
 		85B923A82ECE602D00790807 /* LinguaEarWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LinguaEarWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B923B42ECE602E00790807 /* LinguaEarWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LinguaEarWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B923BE2ECE602E00790807 /* LinguaEarWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LinguaEarWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		85ED28E82ED2F27800525A56 /* LinguaEarWatchV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinguaEarWatchV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -117,25 +116,6 @@
 			);
 			target = 85B923BD2ECE602E00790807 /* LinguaEarWatch Watch AppUITests */;
 		};
-		85ED28E92ED2F27800525A56 /* Exceptions for "LinguaEarWatch Watch App" folder in "LinguaEarWatchV2" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Assets.xcassets,
-				ContentView.swift,
-				DailyLimitManager.swift,
-				LinguaEarWatchApp.swift,
-				LinguaEarWatchV2/LinguaEarWatchV2App.swift,
-				LinguaEarWatchV2/README_WalkieMode.txt,
-				LinguaEarWatchV2/WalkieAudioCapture.swift,
-				LinguaEarWatchV2/WalkieConnectionManager.swift,
-				LinguaEarWatchV2/WalkieHelpView.swift,
-				LinguaEarWatchV2/WalkieModeView.swift,
-				LinguaEarWatchV2/WalkiePeer.swift,
-				LinguaEarWatchV2/WalkieState.swift,
-				LinguaEarWatchV2/WalkieTalkieModeView.swift,
-			);
-			target = 85ED28E12ED2F27800525A56 /* LinguaEarWatchV2 */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -151,9 +131,6 @@
 		};
 		85B923A92ECE602D00790807 /* LinguaEarWatch Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				85ED28E92ED2F27800525A56 /* Exceptions for "LinguaEarWatch Watch App" folder in "LinguaEarWatchV2" target */,
-			);
 			path = "LinguaEarWatch Watch App";
 			sourceTree = "<group>";
 		};
@@ -175,6 +152,11 @@
 				85E612462ECEB7A70058229F /* Exceptions for "LinguaEar" folder in "LinguaEarWatch Watch AppUITests" target */,
 			);
 			path = LinguaEar;
+			sourceTree = "<group>";
+		};
+		85ED290F2ED3A92600525A56 /* LinguaEarWatchV2 */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = LinguaEarWatchV2;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -222,21 +204,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		85ED28E32ED2F27800525A56 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		8510980F2EC912BB003D1EF6 = {
 			isa = PBXGroup;
 			children = (
-				85E612372ECEB7A70058229F /* LinguaEar */,
+				85ED290F2ED3A92600525A56 /* LinguaEarWatchV2 */,
 				85B923A92ECE602D00790807 /* LinguaEarWatch Watch App */,
+				85E612372ECEB7A70058229F /* LinguaEar */,
 				851098282EC912BC003D1EF6 /* LinguaEarTests */,
 				851098322EC912BC003D1EF6 /* LinguaEarUITests */,
 				85B923B72ECE602E00790807 /* LinguaEarWatch Watch AppTests */,
@@ -254,7 +230,6 @@
 				85B923A82ECE602D00790807 /* LinguaEarWatch Watch App.app */,
 				85B923B42ECE602E00790807 /* LinguaEarWatch Watch AppTests.xctest */,
 				85B923BE2ECE602E00790807 /* LinguaEarWatch Watch AppUITests.xctest */,
-				85ED28E82ED2F27800525A56 /* LinguaEarWatchV2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -343,6 +318,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				85B923A92ECE602D00790807 /* LinguaEarWatch Watch App */,
+				85ED290F2ED3A92600525A56 /* LinguaEarWatchV2 */,
 			);
 			name = "LinguaEarWatch Watch App";
 			packageProductDependencies = (
@@ -398,28 +374,6 @@
 			productReference = 85B923BE2ECE602E00790807 /* LinguaEarWatch Watch AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		85ED28E12ED2F27800525A56 /* LinguaEarWatchV2 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 85ED28E52ED2F27800525A56 /* Build configuration list for PBXNativeTarget "LinguaEarWatchV2" */;
-			buildPhases = (
-				85ED28E22ED2F27800525A56 /* Sources */,
-				85ED28E32ED2F27800525A56 /* Frameworks */,
-				85ED28E42ED2F27800525A56 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				85B923A92ECE602D00790807 /* LinguaEarWatch Watch App */,
-			);
-			name = LinguaEarWatchV2;
-			packageProductDependencies = (
-			);
-			productName = "LinguaEarWatch Watch App";
-			productReference = 85ED28E82ED2F27800525A56 /* LinguaEarWatchV2.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -474,7 +428,6 @@
 				85B923A72ECE602D00790807 /* LinguaEarWatch Watch App */,
 				85B923B32ECE602E00790807 /* LinguaEarWatch Watch AppTests */,
 				85B923BD2ECE602E00790807 /* LinguaEarWatch Watch AppUITests */,
-				85ED28E12ED2F27800525A56 /* LinguaEarWatchV2 */,
 			);
 		};
 /* End PBXProject section */
@@ -522,13 +475,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		85ED28E42ED2F27800525A56 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -568,13 +514,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		85B923BA2ECE602E00790807 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		85ED28E22ED2F27800525A56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1007,64 +946,6 @@
 			};
 			name = Release;
 		};
-		85ED28E62ED2F27800525A56 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4ZQHKGZZ5H;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "LinguaEar Watch V2";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.sjpbailey.LinguaEar;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sjpbailey.LinguaEarV2.watchkitapp.v2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Debug;
-		};
-		85ED28E72ED2F27800525A56 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4ZQHKGZZ5H;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "LinguaEar Watch V2";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.sjpbailey.LinguaEar;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sjpbailey.LinguaEarV2.watchkitapp.v2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 26.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1127,15 +1008,6 @@
 			buildConfigurations = (
 				85B923CE2ECE602E00790807 /* Debug */,
 				85B923CF2ECE602E00790807 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		85ED28E52ED2F27800525A56 /* Build configuration list for PBXNativeTarget "LinguaEarWatchV2" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				85ED28E62ED2F27800525A56 /* Debug */,
-				85ED28E72ED2F27800525A56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
