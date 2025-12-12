@@ -40,6 +40,15 @@ struct ContentView: View {
     /// When true, we experiment with Auto-response session mode.
     @State private var autoResponseMode: Bool = false
     
+    // MARK: - Sheets
+    enum ActiveSheet: Identifiable {
+        case listenRepeat
+        
+        var id: Int { hashValue }
+    }
+    
+    @State private var activeSheet: ActiveSheet?
+    
     // MARK: - Conversation direction
     enum TalkDirection {
         case youToThem
@@ -88,22 +97,22 @@ struct ContentView: View {
             "I don’t understand."
         ],
         
-            .salon: [
-                "I would like a haircut, please.",
-                "Just a little shorter, please.",
-                "Not too short on top.",
-                "Please trim the sides.",
-                "Can you wash my hair, please?",
-                "Can you shave the neck?",
-                "It looks great, thank you!"
-            ],
+        .salon: [
+            "I would like a haircut, please.",
+            "Just a little shorter, please.",
+            "Not too short on top.",
+            "Please trim the sides.",
+            "Can you wash my hair, please?",
+            "Can you shave the neck?",
+            "It looks great, thank you!"
+        ],
         
-            .conversation: [
-                "What do you think?",
-                "Can we talk for a moment?",
-                "That’s interesting!",
-                "I really appreciate your help."
-            ]
+        .conversation: [
+            "What do you think?",
+            "Can we talk for a moment?",
+            "That’s interesting!",
+            "I really appreciate your help."
+        ]
     ]
     
     // MARK: - Travel phrases by subcategory
@@ -118,90 +127,147 @@ struct ContentView: View {
             "Can you wait for me?"
         ],
         
-            .bus: [
-                "Where is the bus stop?",
-                "Which bus goes to the city center?",
-                "What time is the next bus?",
-                "Does this bus stop at ____?",
-                "How much is a bus ticket?"
-            ],
+        .bus: [
+            "Where is the bus stop?",
+            "Which bus goes to the city center?",
+            "What time is the next bus?",
+            "Does this bus stop at ____?",
+            "How much is a bus ticket?"
+        ],
         
-            .train: [
-                "Where is the train station?",
-                "Which platform is the train on?",
-                "When is the next train?",
-                "Does this train stop at ____?",
-                "How much is a train ticket?",
-                "I would like to buy a train ticket."
-            ],
+        .train: [
+            "Where is the train station?",
+            "Which platform is the train on?",
+            "When is the next train?",
+            "Does this train stop at ____?",
+            "How much is a train ticket?",
+            "I would like to buy a train ticket."
+        ],
         
-            .airport: [
-                "Where is the airport?",
-                "Where is the check-in counter?",
-                "Where is security?",
-                "Where is my boarding gate?",
-                "What time does boarding start?",
-                "Where do I pick up my luggage?",
-                "My bag is missing. Can you help me?",
-                "I need assistance with my passport."
-            ],
+        .airport: [
+            "Where is the airport?",
+            "Where is the check-in counter?",
+            "Where is security?",
+            "Where is my boarding gate?",
+            "What time does boarding start?",
+            "Where do I pick up my luggage?",
+            "My bag is missing. Can you help me?",
+            "I need assistance with my passport."
+        ],
         
-            .navigation: [
-                "I need directions, please.",
-                "How do I get to the city center?",
-                "Can you show me on the map?",
-                "Is it far from here?",
-                "Is it walking distance?",
-                "Which way do I go?"
-            ],
+        .navigation: [
+            "I need directions, please.",
+            "How do I get to the city center?",
+            "Can you show me on the map?",
+            "Is it far from here?",
+            "Is it walking distance?",
+            "Which way do I go?"
+        ],
         
-            .food: [
-                "Where is the nearest restaurant?",
-                "Can you recommend a good place to eat?",
-                "Do you take credit cards?",
-                "Is there a vegetarian option?",
-                "I would like a table for two."
-            ],
+        .food: [
+            "Where is the nearest restaurant?",
+            "Can you recommend a good place to eat?",
+            "Do you take credit cards?",
+            "Is there a vegetarian option?",
+            "I would like a table for two."
+        ],
         
-            .shopping: [
-                "How much does this cost?",
-                "Do you have this in another size?",
-                "Do you have this in another color?",
-                "Can I try this on?",
-                "Is there a discount?"
-            ],
+        .shopping: [
+            "How much does this cost?",
+            "Do you have this in another size?",
+            "Do you have this in another color?",
+            "Can I try this on?",
+            "Is there a discount?"
+        ],
         
-            .hotel: [
-                "Where is the hotel reception?",
-                "I have a reservation.",
-                "Can I check in early?",
-                "What time is checkout?",
-                "Can you hold my luggage?",
-                "How do I connect to the Wi-Fi?"
-            ],
+        .hotel: [
+            "Where is the hotel reception?",
+            "I have a reservation.",
+            "Can I check in early?",
+            "What time is checkout?",
+            "Can you hold my luggage?",
+            "How do I connect to the Wi-Fi?"
+        ],
         
-            .emergency: [
-                "I need help!",
-                "Please call an ambulance!",
-                "Please call the police!",
-                "I lost my passport.",
-                "I lost my wallet.",
-                "I am lost. Can you help me?"
-            ],
+        .emergency: [
+            "I need help!",
+            "Please call an ambulance!",
+            "Please call the police!",
+            "I lost my passport.",
+            "I lost my wallet.",
+            "I am lost. Can you help me?"
+        ],
         
-            .basics: [
-                "Where is the bathroom?",
-                "Do you speak English?",
-                "Can you speak more slowly?",
-                "I don't understand.",
-                "Can you repeat that?"
-            ]
+        .basics: [
+            "Where is the bathroom?",
+            "Do you speak English?",
+            "Can you speak more slowly?",
+            "I don't understand.",
+            "Can you repeat that?"
+        ]
     ]
     
     @State private var selectedCategory: PhraseCategory   = .basic
     @State private var selectedPhraseIndex: Int           = 0
     @State private var showPhrases: Bool                  = false
     @State private var selectedTravelSubcategory: TravelSubcategory = .taxi
+    
+    // MARK: - Computed helpers (to make compiler happy)
+    
+    private var directionSummary: String {
+        switch conversationDirection {
+        case .youToThem:
+            if autoDetectLanguage {
+                return "You speak (auto-detect), they hear \(theyLanguage.displayName)."
+            } else {
+                return "You speak \(youLanguage.displayName), they hear \(theyLanguage.displayName)."
+            }
+        case .themToYou:
+            if autoDetectLanguage {
+                return "They speak (auto-detect), you hear \(youLanguage.displayName)."
+            } else {
+                return "They speak \(theyLanguage.displayName), you hear \(youLanguage.displayName)."
+            }
+        }
+    }
+    
+    private var playLanguageName: String {
+        switch conversationDirection {
+        case .youToThem:
+            return theyLanguage.displayName
+        case .themToYou:
+            return youLanguage.displayName
+        }
+    }
+    
+    private var playTTSCode: String {
+        switch conversationDirection {
+        case .youToThem:
+            return theyLanguage.ttsCode
+        case .themToYou:
+            return youLanguage.ttsCode
+        }
+    }
+    
+    private var micLabel: String {
+        if autoResponseMode {
+            return isListening
+            ? "Listening… stop talking to auto-translate"
+            : "Tap to speak (auto-response)"
+        } else {
+            return isListening
+            ? "Release to translate & speak"
+            : "Hold to speak"
+        }
+    }
+    
+    private var quickPhrases: [String] {
+        if selectedCategory == .travel {
+            return travelPhrasesBySubcategory[selectedTravelSubcategory] ?? []
+        } else {
+            return phrasesByCategory[selectedCategory] ?? []
+        }
+    }
     
     // MARK: - Body
     
@@ -316,23 +382,6 @@ struct ContentView: View {
                 }
                 
                 // Direction summary banner
-                let directionSummary: String = {
-                    switch conversationDirection {
-                    case .youToThem:
-                        if autoDetectLanguage {
-                            return "You speak (auto-detect), they hear \(theyLanguage.displayName)."
-                        } else {
-                            return "You speak \(youLanguage.displayName), they hear \(theyLanguage.displayName)."
-                        }
-                    case .themToYou:
-                        if autoDetectLanguage {
-                            return "They speak (auto-detect), you hear \(youLanguage.displayName)."
-                        } else {
-                            return "They speak \(theyLanguage.displayName), you hear \(youLanguage.displayName)."
-                        }
-                    }
-                }()
-                
                 HStack {
                     Image(systemName: "arrow.left.arrow.right.circle.fill")
                         .foregroundColor(.white)
@@ -418,32 +467,6 @@ struct ContentView: View {
                 
                 // MARK: - Play + Mic row (side-by-side)
                 VStack(spacing: 12) {
-                    
-                    let playLanguageName: String = {
-                        switch conversationDirection {
-                        case .youToThem: return theyLanguage.displayName
-                        case .themToYou: return youLanguage.displayName
-                        }
-                    }()
-                    
-                    let playTTSCode: String = {
-                        switch conversationDirection {
-                        case .youToThem: return theyLanguage.ttsCode
-                        case .themToYou: return youLanguage.ttsCode
-                        }
-                    }()
-                    
-                    let micLabel: String = {
-                        if autoResponseMode {
-                            return isListening
-                            ? "Listening… stop talking to auto-translate"
-                            : "Tap to speak (auto-response)"
-                        } else {
-                            return isListening
-                            ? "Release to translate & speak"
-                            : "Hold to speak"
-                        }
-                    }()
                     
                     HStack(alignment: .top) {
                         
@@ -542,6 +565,37 @@ struct ContentView: View {
                     }
                 }
                 
+                // MARK: - Listen & Repeat Practice Entry
+                VStack(alignment: .leading, spacing: 8) {
+                    Button {
+                        activeSheet = .listenRepeat
+                    } label: {
+                        HStack(spacing: 12) {
+                            Image(systemName: "ear.badge.waveform")
+                                .font(.title2)
+                            
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Listen & Repeat practice")
+                                    .font(.headline)
+                                Text("Hear a phrase, repeat it, and get a score on your pronunciation.")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .lineLimit(2)
+                            }
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.gray)
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color(.secondarySystemBackground))
+                        .cornerRadius(12)
+                    }
+                }
+                .padding(.top, 24)
+                
                 // QUICK PHRASES SECTION
                 VStack(alignment: .leading, spacing: 8) {
                     
@@ -582,7 +636,8 @@ struct ContentView: View {
                             .font(.caption)
                             .foregroundColor(.gray)
                         
-                        let phrases: [String] = {
+                        // Decide which phrase list to use
+                        let currentPhrases: [String] = {
                             if selectedCategory == .travel {
                                 return travelPhrasesBySubcategory[selectedTravelSubcategory] ?? []
                             } else {
@@ -590,16 +645,20 @@ struct ContentView: View {
                             }
                         }()
                         
-                        Picker("Phrase", selection: $selectedPhraseIndex) {
-                            ForEach(phrases.indices, id: \.self) { index in
-                                Text(phrases[index]).tag(index)
+                        // Wheel picker of phrases
+                        if !currentPhrases.isEmpty {
+                            Picker("Phrase", selection: $selectedPhraseIndex) {
+                                ForEach(currentPhrases.indices, id: \.self) { index in
+                                    Text(currentPhrases[index]).tag(index)
+                                }
                             }
+                            .pickerStyle(.wheel)
+                            .frame(maxHeight: 140)
                         }
-                        .pickerStyle(.wheel)
-                        .frame(maxHeight: 140)
                         
+                        // Play phrase button (uses version 1 translator)
                         Button {
-                            playQuickPhrase(phrases: phrases)
+                            playQuickPhrase(phrases: currentPhrases)
                         } label: {
                             Label("Play phrase in \(theyLanguage.displayName)",
                                   systemImage: "play.circle.fill")
@@ -618,8 +677,8 @@ struct ContentView: View {
             .padding(.horizontal)
             .padding(.bottom, 16)
         }
+        .navigationBarBackButtonHidden(true)
         // Live transcript -> heardPhrase (and auto-stop in auto-response mode)
-        .navigationBarBackButtonHidden(true)   // 👈 Hides the chevron, keeps swipe
         .onChange(of: speechRecognizer.transcript) { _, newValue in
             if isListening {
                 let trimmed = newValue
@@ -648,17 +707,21 @@ struct ContentView: View {
         .onChange(of: theyLanguage) { _, _ in
             handleLanguageChangeReTranslation()
         }
-        // Re-translate if the target ("They hear") language changes
-        .onChange(of: theyLanguage) { _, _ in
-            handleLanguageChangeReTranslation()
-        }
-
-        // ⬇️ ADD THIS NEW BLOCK
         .alert("Daily limit reached",
                isPresented: $showDailyLimitAlert) {
             Button("OK", role: .cancel) { }
         } message: {
             Text("You’ve reached today’s free limit of \(DailyLimitManager.shared.maxPerDayLimit()) translations on this device. Please try again tomorrow.")
+        }
+        // Unified sheet for practice view
+        .sheet(item: $activeSheet) { sheet in
+            switch sheet {
+            case .listenRepeat:
+                ListenRepeatPracticeView(
+                    practiceLanguage: theyLanguage,
+                    translator: translator
+                )
+            }
         }
     }
     
