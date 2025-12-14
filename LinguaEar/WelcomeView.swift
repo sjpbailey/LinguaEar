@@ -3,51 +3,50 @@
 //  LinguaEar
 //
 //  Front-door welcome + help screen.
-//  No translation logic here, just explanations and a button to start.
+//  Includes a bottom “Back to Help” button in the main translator view,
+//  so users can return here without a top nav back button.
 //
 
 import SwiftUI
 
 struct WelcomeView: View {
-    
-    // When we wire this into the app entry, we’ll wrap this in a NavigationStack
-    // and use this bool with a NavigationLink, but for now it just drives the preview.
+
     @State private var isShowingTranslator: Bool = false
-    
+
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    
+
                     // MARK: - Hero / Title
                     VStack(alignment: .leading, spacing: 8) {
                         HStack(alignment: .center, spacing: 12) {
                             Image(systemName: "ear.badge.waveform")
                                 .font(.system(size: 40))
                                 .foregroundColor(.blue)
-                            
+
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("LinguaEar")
                                     .font(.system(size: 36, weight: .bold))
-                                
+
                                 Text("Listen. Understand. Reply.")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
                         }
-                        
+
                         Text("A conversation-first translator for real life — salons, travel, construction sites, and everyday moments where people don’t share the same language.")
                             .font(.callout)
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     .padding(.top, 8)
-                    
+
                     // MARK: - Quick Start
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Quick start")
                             .font(.headline)
-                        
+
                         VStack(alignment: .leading, spacing: 6) {
                             Label("Choose who speaks and who hears at the top (You / Them).", systemImage: "person.2.fill")
                             Label("Pick languages from the menus — for example: You = English, They = Spanish.", systemImage: "globe")
@@ -56,11 +55,11 @@ struct WelcomeView: View {
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     }
-                    
+
                     // MARK: - Modes (Expandable)
                     DisclosureGroup {
                         VStack(alignment: .leading, spacing: 10) {
-                            
+
                             // Hold to Speak
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("Hold to Speak (Walkie-Talkie)")
@@ -69,9 +68,9 @@ struct WelcomeView: View {
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
-                            
+
                             Divider().padding(.vertical, 4)
-                            
+
                             // Auto-Response
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("Auto-Response Mode")
@@ -80,9 +79,20 @@ struct WelcomeView: View {
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
-                            
+
                             Divider().padding(.vertical, 4)
-                            
+
+                            // Listen & Repeat Practice (NEW)
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Listen & Repeat Practice (NEW)")
+                                    .font(.subheadline.bold())
+                                Text("Tap “Listen & Repeat practice” to hear a phrase, repeat it, and get a pronunciation score. It also supports custom phrases you type in English and practice in the language you selected.")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+
+                            Divider().padding(.vertical, 4)
+
                             // Paste & Translate
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("Paste & Translate")
@@ -91,9 +101,9 @@ struct WelcomeView: View {
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
-                            
+
                             Divider().padding(.vertical, 4)
-                            
+
                             // Quick Phrases
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("Quick Phrases")
@@ -112,11 +122,11 @@ struct WelcomeView: View {
                                 .font(.headline)
                         }
                     }
-                    
+
                     // MARK: - Real-World Examples (Expandable)
                     DisclosureGroup {
                         VStack(alignment: .leading, spacing: 12) {
-                            
+
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("At the hair salon")
                                     .font(.subheadline.bold())
@@ -129,9 +139,9 @@ struct WelcomeView: View {
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                             }
-                            
+
                             Divider().padding(.vertical, 4)
-                            
+
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("Taxi / Travel")
                                     .font(.subheadline.bold())
@@ -143,9 +153,9 @@ struct WelcomeView: View {
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                             }
-                            
+
                             Divider().padding(.vertical, 4)
-                            
+
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("On a job site")
                                     .font(.subheadline.bold())
@@ -156,9 +166,9 @@ struct WelcomeView: View {
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                             }
-                            
+
                             Divider().padding(.vertical, 4)
-                            
+
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("Reading a long message")
                                     .font(.subheadline.bold())
@@ -180,7 +190,7 @@ struct WelcomeView: View {
                                 .font(.headline)
                         }
                     }
-                    
+
                     // MARK: - Tips (Expandable)
                     DisclosureGroup {
                         VStack(alignment: .leading, spacing: 8) {
@@ -200,7 +210,7 @@ struct WelcomeView: View {
                                 .font(.headline)
                         }
                     }
-                    
+
                     // MARK: - Watch Version (Just Info)
                     DisclosureGroup {
                         VStack(alignment: .leading, spacing: 8) {
@@ -209,7 +219,7 @@ struct WelcomeView: View {
                             • Choose languages on your wrist.
                             • Dictate a short phrase.
                             • Play the translation for the person in front of you.
-                            
+
                             We’re keeping it lightweight so you can use it without pulling out your phone.
                             """)
                             .font(.caption)
@@ -224,7 +234,7 @@ struct WelcomeView: View {
                                 .font(.headline)
                         }
                     }
-                    
+
                     // MARK: - Start Button
                     VStack(spacing: 12) {
                         Button {
@@ -242,8 +252,8 @@ struct WelcomeView: View {
                             .cornerRadius(14)
                             .shadow(radius: 4)
                         }
-                        
-                        Text("You can come back here later for help by restarting the app.")
+
+                        Text("Tip: Use the bottom “Back to Help” button anytime to return here.")
                             .font(.caption)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
@@ -254,10 +264,34 @@ struct WelcomeView: View {
                 .padding(.bottom, 24)
             }
             .navigationDestination(isPresented: $isShowingTranslator) {
-                // This is your existing main view:
-                ContentView()
+                TranslatorShell(backToHelp: { isShowingTranslator = false })
             }
         }
+    }
+}
+
+/// Wraps ContentView and adds a bottom “Back to Help” control without using the top nav back button.
+private struct TranslatorShell: View {
+    let backToHelp: () -> Void
+
+    var body: some View {
+        VStack(spacing: 0) {
+            ContentView()
+
+            // ✅ Bottom back button (out of the way)
+            Button(action: backToHelp) {
+                HStack(spacing: 6) {              // tighter spacing
+                    Image(systemName: "chevron.left")
+                    Text("Back to Help")
+                        .fontWeight(.medium)      // lighter weight
+                }
+                .font(.caption)                   // smaller text
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 8)             // less height
+                .background(Color(.secondarySystemBackground))
+            }
+        }
+        .navigationBarBackButtonHidden(true) // no top back button
     }
 }
 
