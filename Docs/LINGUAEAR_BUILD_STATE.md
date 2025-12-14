@@ -1,32 +1,51 @@
-PROJECT: LinguaEar
-VERSION: 2.0
-GOAL: Practice Tutor (no-embarrassment mode)
+# LinguaEar — BUILD STATE (Authoritative)
 
-SCOPE LOCK:
-- This file is authoritative
-- Do not add features unless explicitly requested
-- Version 2 = practice tutor only
-- No watch work unless stated
-- Reuse existing Translator + TTS pipeline
+> This file is the single source of truth for LinguaEar project state.
+> Any new work or new chat session MUST resume from here.
 
-CURRENT STATE:
-- Version 1 released and stays unchanged
-- Version 2 is active development
-- Practice area exists but is being refined
+---
 
-COMPLETED:
-- Practice mode entry exists
-- Shared translation logic with V1
-- Welcome / intro flow in place
+## PROJECT
+- App: LinguaEar
+- Platform: iOS + watchOS
+- Repo: LinguaEar
+- Primary Branch: main
+- Active Dev Branch: Watch-V2
 
-IN PROGRESS:
-- Practice phrase grouping and layout
-- UX refinement for safe practice
+## CURRENT FOCUS
+Version 2 — Practice Tutor (no embarrassment mode)
 
-KNOWN ISSUES / QUESTIONS:
-- Phrase areas may need consolidation
-- Need testing pass on practice flow
+## LAST KNOWN GOOD STATE
+- WelcomeView implemented and committed
+- Watch-V2 branch clean
+- Xcode user state ignored (.gitignore fixed)
+- No uncommitted changes
 
-NEXT STEP:
-- Finish practice phrase organization
-- Review tests and adjust UI if needed
+## WHAT IS COMPLETE
+- ✅ Version 1 released and frozen
+- ✅ Watch-V2 branch created
+- ✅ WelcomeView.swift updated
+- ✅ Git hygiene fixed (xcuserstate ignored)
+- ✅ Docs folder established
+
+## WHAT IS IN PROGRESS
+- ⏳ Practice Tutor UI flow
+- ⏳ Phrase grouping / practice logic
+- ⏳ Decide whether practice lives in V2 only or shared with V1
+
+## NEXT STEPS (DO NOT SKIP)
+1. Review Practice Tutor screen layout
+2. Decide final phrase grouping strategy
+3. Implement PracticeSessionView
+4. Add minimal test phrases (no embarrassment)
+
+## HARD RULES
+- Do NOT add new features unless explicitly decided
+- Do NOT refactor unrelated code
+- Do NOT merge Watch-V2 into main yet
+- Always update this file when stopping work
+
+## LAST UPDATE
+- Date: 2025-12-14
+- By: Steven
+- Reason: Stabilized repo + resumed V2 work
