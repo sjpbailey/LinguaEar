@@ -26,6 +26,7 @@ struct ListenRepeatPracticeView: View {
     
     let practiceLanguage: ConversationLanguage   // usually “They hear”
     let translator: TranslatorService            // translate EN → target
+    let presetEnglishPhrases: [String]
     
     @Environment(\.dismiss) private var dismiss
     @StateObject private var speechRecognizer = SpeechRecognizer()
@@ -34,23 +35,11 @@ struct ListenRepeatPracticeView: View {
     // MARK: - Audio state
     
     @State private var playbackSpeed: Float = 0.50   // 0.25 slow, 0.50 normal
-    
     @State private var audioRecorder: AVAudioRecorder?
     @State private var audioPlayer: AVAudioPlayer?
     @State private var userRecordingURL: URL?
     
-    // MARK: - Phrase data
-    
-    private let phrases: [PracticePhrase] = [
-        PracticePhrase(english: "Where is the bathroom?",              spanish: "¿Dónde está el baño?"),
-        PracticePhrase(english: "Can you speak more slowly, please?",  spanish: "¿Puede hablar más despacio, por favor?"),
-        PracticePhrase(english: "I am learning your language.",        spanish: "Estoy aprendiendo su idioma."),
-        PracticePhrase(english: "Nice to meet you.",                   spanish: "Mucho gusto."),
-        PracticePhrase(english: "How much does this cost?",            spanish: "¿Cuánto cuesta esto?"),
-        PracticePhrase(english: "Where is the hotel?",                 spanish: "¿Dónde está el hotel?"),
-        PracticePhrase(english: "Can you help me?",                    spanish: "¿Puede ayudarme?")
-    ]
-    
+   
     // MARK: - UI state
     
     @State private var currentIndex: Int = 0
@@ -76,40 +65,33 @@ struct ListenRepeatPracticeView: View {
     // MARK: - Derived helpers (no logic directly in body)
     
     private var effectiveEnglish: String {
+        guard !presetEnglishPhrases.isEmpty else { return "" }
         if usingCustomPhrase,
            !customEnglishText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             return customEnglishText
         }
-        return phrases[currentIndex].english
+        return presetEnglishPhrases[currentIndex]
     }
     
     private var effectiveTarget: String {
-        // Custom phrase always wins
         if usingCustomPhrase,
            !customTargetText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             return customTargetText
         }
-        
-        // Presets:
-        // - Spanish: use built-in Spanish (no API)
-        if practiceLanguage == .spanish {
-            return phrases[currentIndex].spanish
-        }
-        
-        // - Any other language: use cached translation if ready; otherwise show English until it arrives
+
         if let cached = presetTranslatedByIndex[currentIndex],
            !cached.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             return cached
         }
-        
-        return phrases[currentIndex].english
+
+        return presetEnglishPhrases[currentIndex] // until translation arrives
     }
     
     private var phraseLabel: String {
         if usingCustomPhrase {
             return "Custom phrase"
         } else {
-            return "Phrase \(currentIndex + 1) of \(phrases.count)"
+            return presetEnglishPhrases[currentIndex]
         }
     }
     
@@ -155,10 +137,10 @@ struct ListenRepeatPracticeView: View {
                 playbackSpeed = 0.50
                 translatePresetIfNeeded()
             }
-            .onChange(of: currentIndex) { _ in
+            .onChange(of: currentIndex) { _, _ in
                 translatePresetIfNeeded()
             }
-            .onChange(of: practiceLanguage) { _ in
+            .onChange(of: practiceLanguage) { _, _ in
                 translatePresetIfNeeded()
             }
             .onDisappear {
@@ -428,10 +410,7 @@ struct ListenRepeatPracticeView: View {
     
     private func translatePresetIfNeeded() {
         // Only for preset phrases (not custom)
-        if usingCustomPhrase { return }
-        
-        // Spanish uses built-in list (no translation)
-        if practiceLanguage == .spanish { return }
+        if usingCustomPhrase { return }        
         
         // Already cached?
         if let cached = presetTranslatedByIndex[currentIndex],
@@ -439,7 +418,7 @@ struct ListenRepeatPracticeView: View {
             return
         }
         
-        let english = phrases[currentIndex].english
+        let english = presetEnglishPhrases[currentIndex]
         
         translator.translate(
             text: english,
@@ -585,7 +564,7 @@ struct ListenRepeatPracticeView: View {
         attemptsForCurrent = 0
         userRecordingURL   = nil
         
-        currentIndex = (currentIndex + 1) % phrases.count
+        currentIndex = (currentIndex + 1) % presetEnglishPhrases.count
         practiceState = .idle
         statusText = "Tap Listen to hear the next phrase."
         

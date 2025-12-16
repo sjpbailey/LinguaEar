@@ -182,8 +182,10 @@ final class TranslatorService: ObservableObject {
                 // Debug
                 if let detected = first.detectedLanguage {
                     print("🔍 Azure detected source=\(detected.language) (score=\(detected.score)) → to=\(translation.to)")
-                } else {
+                } else if from == nil {
                     print("🔍 Azure did not return detectedLanguage.")
+                } else {
+                    print("🔍 Source fixed (from=\(from ?? "")) → to=\(translation.to)")
                 }
 
                 completion(.success((translation.text, detectedCode)))

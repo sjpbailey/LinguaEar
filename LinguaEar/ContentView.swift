@@ -39,6 +39,8 @@ struct ContentView: View {
     @State private var autoDetectLanguage: Bool = false
     /// When true, we experiment with Auto-response session mode.
     @State private var autoResponseMode: Bool = false
+    @State private var showHoldTip: Bool = false
+    @State private var holdTipWorkItem: DispatchWorkItem? = nil
     
     // MARK: - Sheets
     enum ActiveSheet: Identifiable {
@@ -261,6 +263,33 @@ struct ContentView: View {
         }
     }
     
+    private var v1PracticePhrases: [String] {
+        var out: [String] = []
+
+        // Basic
+        out += phrasesByCategory[.basic] ?? []
+
+        // Travel (in enum order)
+        out += travelPhrasesBySubcategory[.taxi] ?? []
+        out += travelPhrasesBySubcategory[.bus] ?? []
+        out += travelPhrasesBySubcategory[.train] ?? []
+        out += travelPhrasesBySubcategory[.airport] ?? []
+        out += travelPhrasesBySubcategory[.navigation] ?? []
+        out += travelPhrasesBySubcategory[.food] ?? []
+        out += travelPhrasesBySubcategory[.shopping] ?? []
+        out += travelPhrasesBySubcategory[.hotel] ?? []
+        out += travelPhrasesBySubcategory[.emergency] ?? []
+        out += travelPhrasesBySubcategory[.basics] ?? []
+
+        // Salon
+        out += phrasesByCategory[.salon] ?? []
+
+        // Conversation (last)
+        out += phrasesByCategory[.conversation] ?? []
+
+        return out
+    }
+    
     private var quickPhrases: [String] {
         if selectedCategory == .travel {
             return travelPhrasesBySubcategory[selectedTravelSubcategory] ?? []
@@ -467,101 +496,119 @@ struct ContentView: View {
                 
                 // MARK: - Play + Mic row (side-by-side)
                 VStack(spacing: 12) {
-                    
-                    HStack(alignment: .top) {
-                        
-                        // LEFT: Play button
-                        VStack(spacing: 6) {
-                            Button {
-                                ttsManager.speak(
-                                    translatedText,
-                                    languageCode: playTTSCode,
-                                    useSpeaker: false
-                                )
-                            } label: {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.blue)
-                                        .frame(width: 80, height: 80)
-                                        .shadow(radius: 4)
-                                    
-                                    Image(systemName: "speaker.wave.2.fill")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 28, weight: .bold))
+
+                    ZStack {
+                        HStack(alignment: .top) {
+
+                            // LEFT: Play button
+                            VStack(spacing: 6) {
+                                Button {
+                                    ttsManager.speak(
+                                        translatedText,
+                                        languageCode: playTTSCode,
+                                        useSpeaker: false
+                                    )
+                                } label: {
+                                    ZStack {
+                                        Circle()
+                                            .fill(Color.blue)
+                                            .frame(width: 80, height: 80)
+                                            .shadow(radius: 4)
+
+                                        Image(systemName: "speaker.wave.2.fill")
+                                            .foregroundColor(.white)
+                                            .font(.system(size: 28, weight: .bold))
+                                    }
                                 }
+
+                                Text("Play \(playLanguageName)")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .multilineTextAlignment(.center)
+                                    .frame(maxWidth: 100)
                             }
-                            
-                            Text("Play \(playLanguageName)")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: 100)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.trailing, 10)
-                        
-                        // RIGHT: Mic button
-                        VStack(spacing: 6) {
-                            if autoResponseMode {
-                                // TAP mode (auto-response)
-                                ZStack {
-                                    Circle()
-                                        .fill(isListening ? Color.red : Color.blue)
-                                        .frame(width: 80, height: 80)
-                                        .shadow(radius: isListening ? 8 : 4)
-                                        .scaleEffect(isListening ? 1.05 : 1.0)
-                                    
-                                    Image(systemName: "mic.circle.fill")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 30, weight: .bold))
-                                }
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    handleAutoResponseTap()
-                                }
-                                
-                            } else {
-                                // HOLD mode (walkie-talkie)
-                                ZStack {
-                                    Circle()
-                                        .fill(isListening ? Color.red : Color.blue)
-                                        .frame(width: 80, height: 80)
-                                        .shadow(radius: isListening ? 8 : 4)
-                                        .scaleEffect(isListening ? 1.05 : 1.0)
-                                    
-                                    Image(systemName: isListening ? "mic.fill" : "mic")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 30, weight: .bold))
-                                }
-                                .contentShape(Rectangle())
-                                .gesture(
-                                    DragGesture(minimumDistance: 0)
-                                        .onChanged { _ in
-                                            if !isPressingMic {
-                                                isPressingMic = true
-                                                startListeningOnce()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.trailing, 10)
+
+                            // RIGHT: Mic button
+                            VStack(spacing: 6) {
+                                if autoResponseMode {
+                                    // TAP mode (auto-response)
+                                    ZStack {
+                                        Circle()
+                                            .fill(isListening ? Color.red : Color.blue)
+                                            .frame(width: 80, height: 80)
+                                            .shadow(radius: isListening ? 8 : 4)
+                                            .scaleEffect(isListening ? 1.05 : 1.0)
+
+                                        Image(systemName: "mic.circle.fill")
+                                            .foregroundColor(.white)
+                                            .font(.system(size: 30, weight: .bold))
+                                    }
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        handleAutoResponseTap()
+                                    }
+
+                                } else {
+                                    // HOLD mode (walkie-talkie)
+                                    ZStack {
+                                        Circle()
+                                            .fill(isListening ? Color.red : Color.blue)
+                                            .frame(width: 80, height: 80)
+                                            .shadow(radius: isListening ? 8 : 4)
+                                            .scaleEffect(isListening ? 1.05 : 1.0)
+
+                                        Image(systemName: isListening ? "mic.fill" : "mic")
+                                            .foregroundColor(.white)
+                                            .font(.system(size: 30, weight: .bold))
+                                    }
+                                    .contentShape(Rectangle())
+                                    .gesture(
+                                        DragGesture(minimumDistance: 0)
+                                            .onChanged { _ in
+                                                if !isPressingMic {
+                                                    isPressingMic = true
+                                                    showHoldToSpeakTip()
+                                                    startListeningOnce()
+                                                }
                                             }
-                                        }
-                                        .onEnded { _ in
-                                            if isPressingMic {
-                                                isPressingMic = false
-                                                stopListeningOnce(
-                                                    autoSpeak: true,
-                                                    restartAfterTranslation: false
-                                                )
+                                            .onEnded { _ in
+                                                if isPressingMic {
+                                                    isPressingMic = false
+                                                    stopListeningOnce(
+                                                        autoSpeak: true,
+                                                        restartAfterTranslation: false
+                                                    )
+                                                }
                                             }
-                                        }
-                                )
+                                    )
+                                }
+
+                                Text(micLabel)
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .multilineTextAlignment(.center)
+                                    .frame(maxWidth: 130)
                             }
-                            
-                            Text(micLabel)
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: 130)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .padding(.leading, 10)
                         }
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .padding(.leading, 10)
+
+                        // ✅ Tip overlay (appears between the two buttons, no layout shift)
+                        if !autoResponseMode {
+                            Text("Hold → speak → release")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 10)
+                                .background(Color(.systemBackground).opacity(0.85))
+                                .clipShape(Capsule())
+                                .opacity(showHoldTip ? 1 : 0)
+                                .animation(.easeInOut(duration: 0.2), value: showHoldTip)
+                                .allowsHitTesting(false)
+                                .offset(y: 12)
+                        }
                     }
                 }
                 
@@ -719,13 +766,39 @@ struct ContentView: View {
             case .listenRepeat:
                 ListenRepeatPracticeView(
                     practiceLanguage: theyLanguage,
-                    translator: translator
+                    translator: translator,
+                    presetEnglishPhrases: v1SelectedPhrasesForPractice
                 )
             }
         }
     }
     
     // MARK: - Core listening helpers
+    
+    
+    private func showHoldToSpeakTip() {
+        holdTipWorkItem?.cancel()
+        showHoldTip = true
+
+        let work = DispatchWorkItem {
+            withAnimation(.easeOut(duration: 0.25)) {
+                showHoldTip = false
+            }
+        }
+        holdTipWorkItem = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: work)
+    }
+    
+    
+    private var v1SelectedPhrasesForPractice: [String] {
+        switch selectedCategory {
+        case .travel:
+            return travelPhrasesBySubcategory[selectedTravelSubcategory] ?? []
+        default:
+            return phrasesByCategory[selectedCategory] ?? []
+        }
+    }
+    
     
     /// Single-shot listening used by walkie-talkie mode and auto-response.
     private func startListeningOnce() {
