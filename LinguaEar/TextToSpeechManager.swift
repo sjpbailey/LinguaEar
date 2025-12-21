@@ -105,4 +105,30 @@ final class TextToSpeechManager: ObservableObject {
         synthesizer.stopSpeaking(at: .immediate)
         synthesizer.speak(utterance)
     }
+    
+    // MARK: - Playback controls
+
+    func pause() {
+        if synthesizer.isSpeaking {
+            synthesizer.pauseSpeaking(at: .immediate)
+        }
+    }
+
+    func resume() {
+        if synthesizer.isPaused {
+            synthesizer.continueSpeaking()
+        }
+    }
+
+    func stop() {
+        synthesizer.stopSpeaking(at: .immediate)
+    }
+    
+    var isSpeaking: Bool {
+        synthesizer.isSpeaking
+    }
+
+    var isPaused: Bool {
+        synthesizer.isPaused
+    }
 }

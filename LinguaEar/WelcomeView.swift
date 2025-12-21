@@ -83,12 +83,22 @@ struct WelcomeView: View {
                             Divider().padding(.vertical, 4)
 
                             // Listen & Repeat Practice (NEW)
-                            VStack(alignment: .leading, spacing: 4) {
+                            VStack(alignment: .leading, spacing: 6) {
                                 Text("Listen & Repeat Practice (NEW)")
                                     .font(.subheadline.bold())
-                                Text("Tap “Listen & Repeat practice” to hear a phrase, repeat it, and get a pronunciation score. It also supports custom phrases you type in English and practice in the language you selected.")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
+                                
+                                Text("""
+                            Tap “Listen & Repeat practice” to hear a phrase, repeat it, and get a pronunciation score.
+
+                            Use the playback controls to practice longer phrases or paragraphs:
+                            • ▶️ Play — plays the current sentence
+                            • ⏸ Pause / ⏹ Stop — pause or stop playback
+                            • ⏮ Back / ⏭ Forward — move between sentences
+
+                            For long paragraphs, use ⏭ to advance sentence by sentence at your own pace.
+                            """)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
                             }
 
                             Divider().padding(.vertical, 4)
