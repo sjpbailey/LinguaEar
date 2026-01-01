@@ -1,4 +1,4 @@
-# Development Root
+# App Information only for public information
 
 Standard layout:
 
