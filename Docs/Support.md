@@ -17,8 +17,35 @@ LinguaEar is a conversation-first language assistant that helps you:
 
 ---
 
-## 🧠 Conversation Mode (NEW)
-LinguaEar now helps you **talk, not just translate**.
+## 📡 Nearby Conversations
+Nearby Conversations allows two or more iPhones running LinguaEar to communicate in different languages.
+
+Each person selects:
+- **I Speak** — the language they speak or type in  
+- **I Hear** — the language they want to receive  
+
+How it works:
+1. One device taps **Host**
+2. Other devices tap **Join**
+3. Messages are sent between devices
+4. Each phone receives:
+   - Translated text in their selected language  
+   - Spoken playback when available  
+
+Notes:
+- Requires at least two iPhones with LinguaEar installed  
+- Devices must be nearby  
+- Some languages may be text-only depending on voice availability  
+
+## 🧠 Conversation Features (In Development)
+LinguaEar is actively expanding into more natural conversation tools.
+
+Some features may appear in TestFlight builds or future releases, including:
+- Suggested replies to help continue a conversation  
+- More natural back-and-forth interactions  
+- Improved guidance on what to say next  
+
+These features are still being refined and may not yet be available in the App Store version.
 
 When you speak:
 1. Your phrase is translated  
