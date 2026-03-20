@@ -1,5 +1,6 @@
-
 # LinguaEar Project Roadmap
+
+---
 
 ## 1. Version 1.0 — Completed
 - iPhone real-time translator (manual + auto-detect)
@@ -10,103 +11,133 @@
 - Privacy Policy / Support Pages
 - GitHub repository + .gitignore
 - App Store metadata + screenshots
-- TestFlight submission (pending approval)
+- TestFlight submission
 
 ---
 
-## 2. Version 2 — Watch “Walkie-Talkie Mode”
+## 2. Version 2 — Conversation Mode (NEW CORE FEATURE)
+### Goals
+- Turn LinguaEar into a **conversation assistant**, not just a translator
+- Allow users to:
+  - Speak naturally (even imperfectly)
+  - Get translations
+  - Receive natural reply suggestions
+  - Continue a conversation without restarting
+
+### Current Features
+- Speak → translate → suggest reply
+- Listen to translated phrase
+- Speak reply back
+- Adjustable playback speed (learning vs natural)
+
+### In Progress
+- Conversation loop (continuous back-and-forth)
+- Button simplification (Listen / Reply / Speak Reply)
+- Remove duplicate controls
+- Improve natural phrasing (remove robotic prompts)
+
+### Next Enhancements
+- “Another Reply” (multiple variations)
+- Conversation continuity (context-aware replies)
+- Better anticipation of user intent
+- Cleaner UI separation (you vs AI response)
+
+---
+
+## 3. Version 2 — Watch “Walkie-Talkie Mode”
 ### Goals
 - Live voice stream from Watch A → translate → Watch B
-- Auto-detect spoken language
 - Push-to-talk UI
-- Automatic switching (they speak → translate → send)
-- Background audio session improvements
-- Reliability in noisy environments
+- Auto-detect spoken language
+- Fast, short-phrase optimized translation
+- Reliable in noisy environments
 
 ### Components
 - WatchConnectivity pipeline
-- New translator microflow (short sentence optimized)
-- Mini-TTS on receiver side
-- Visual signal indicators (listening / sending / receiving)
+- Streaming / chunked translation
+- Mini-TTS playback
+- Visual indicators (listening / sending / receiving)
 
 ---
 
-## 3. Version 2 — iOS Enhancements
+## 4. Version 2 — iOS Enhancements
 ### UI/UX
-- Larger microphone UI
-- Animated Bud icon intro animation
-- Improved quick-phrase layout
-- Handoff between phone ↔ watch
+- Larger microphone UI (primary interaction)
+- Cleaner conversation layout
+- Reduced button clutter
+- Clear conversation vs learning modes
 
 ### Functionality
-- Offline phrasebook engine
-- Phrase learning mode (“repeat after me”)
-- Correct pronunciation scoring
+- Auto-detect input language in Conversation Mode
+- Multi-language support (speak one → reply in another)
+- Improved speech clarity and playback tuning
+- Tap-to-hear word (future)
 
 ---
 
-## 4. Version 3 — Group Features
-- Multi-person Walkie-Talkie mode
-- Group translation bubble (up to 4)
-- Wi-Fi direct fallback when LTE unavailable
-- Priority speaker mode
+## 5. Version 3 — Group & Multi-Device Features
+- Multi-person conversation mode (2–4 users)
+- Nearby Conversations expansion
+- Per-device language settings (I Speak / I Hear)
+- Wi-Fi direct fallback
+- Priority speaker handling
 
 ---
 
-## 5. Future Ideas
-- Language tutoring assistant
-- Conversation summary logs
+## 6. Future Ideas
+- AI tutoring assistant (guided learning)
+- Conversation summaries
+- Context-aware replies (multi-turn memory)
 - Live call translation (VoIP)
-- Share translations with AirDrop
-- “Auto Listen” passive mode for restaurants/meetings
-- Kid mode + travel mode presets
+- Passive listening mode (meetings/restaurants)
+- Travel mode / kid mode presets
 
 ---
 
-## 6. Business Model
+## 7. Business Model
 - Premium subscription unlocks:
   - Unlimited translations
-  - Faster Azure tier
-  - Walkie-Talkie mode
-  - Offline phrasebook
+  - Faster processing
+  - Advanced conversation features (AI replies, multi-turn)
+  - Offline phrasebook (future)
 - Free tier:
-  - 50–150 translations/day
+  - Daily translation limit (100–150)
   - Core features
-- Annual discount pricing
+- Annual pricing option
 
 ---
 
-## 7. GitHub Development Workflow
-- `main` → V1 stable
-- `walkie-talkie-v2` → Watch V2 branch
-- `ios-enhancements-v2` → iPhone V2 branch
-- Pull requests with checklists
-- Automatic test scaffolding (later)
-- Release tags:
-  - `v1.0.0`
-  - `v2.0.0-beta`
-  - etc.
+## 8. GitHub Development Workflow
+- `main` → stable release
+- `v2.2.0-ai` → conversation AI development
+- Feature branches for enhancements
+- Pull requests with review checklist
+- Tagged releases:
+  - `v2.1.0`
+  - `v2.2.0-ai`
+  - future versions
 
 ---
 
-## 8. Tracking & Documentation
+## 9. Tracking & Documentation
 - `/Docs` folder:
-  - Roadmap.md (this file)
+  - Roadmap.md
   - ArchitectureDiagram.md
   - APINotes.md
   - AppStoreMetadata.md
   - PrivacyPolicy.md
-- GitHub Projects Kanban
-- Weekly milestones (optional)
+- GitHub Projects / Kanban (optional)
+- Milestones per release
 
 ---
 
-## 9. Long-Term Vision
-- Wearable-to-wearable universal translator
-- Offline neural translation (on-device)
-- Multi-device sync
-- Expand to iPad, Mac, VisionPro
+## 10. Long-Term Vision
+- Real-time conversation assistant across devices
+- “Talk naturally anywhere” experience
+- Multi-language understanding (auto-detect + reply)
+- On-device intelligence (future)
+- Expand to iPad, Mac, Vision Pro
 
 ---
 
-*Updated: November 23, 2025*
+*Updated: March 2026*
