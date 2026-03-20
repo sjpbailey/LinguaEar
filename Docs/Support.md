@@ -1,4 +1,4 @@
-d# LinguaEar Support  
+# LinguaEar Support  
 If you need help with LinguaEar, you're in the right place.
 
 ---

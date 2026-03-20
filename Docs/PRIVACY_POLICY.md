@@ -1,5 +1,5 @@
 # LinguaEar Privacy Policy
-**Last updated: November 23, 2025**
+**Last updated: March 2026**
 
 This Privacy Policy describes how the LinguaEar app (“the App”) handles your information.  
 LinguaEar is developed and published by **Steven Bailey** (“we”, “us”, or “our”).
@@ -40,6 +40,7 @@ Your data is used *only* to:
 - Speak the translated result  
 - Display phrases in the UI  
 - Enforce the daily device-based limit
+- Generate suggested conversational replies to help users continue interactions
 
 We do **not** use your data for:
 - Advertising  
@@ -66,7 +67,7 @@ We do **not** use your data for:
 - Analytics companies  
 
 ### What is sent to Microsoft Azure?
-Only the text you intentionally request to be translated.  
+Only the text you intentionally request to be translated or processed for conversation features. 
 
 Azure privacy: https://privacy.microsoft.com/
 
@@ -132,6 +133,3 @@ Email: **sjpbailey1961@icloud.com**
 ## 10. Changes to This Policy
 We may update this Privacy Policy from time to time.  
 Updates will be reflected by the “Last updated” date at the top.
-## 8. Changes to This Policy
-
-We may update this Privacy Policy from time to time. If we make significant changes, we will update the "Last updated" date above and may provide additional notice inside the App or on the App Store listing.
