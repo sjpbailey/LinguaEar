@@ -101,6 +101,12 @@ It resets every 24 hours.
 
 ---
 
+### ❗ Nearby Conversations not connecting
+- Ensure both devices have LinguaEar open  
+- One device must be hosting before others join  
+- Keep devices within close range  
+- Try restarting the app on both devices  
+
 ## 💬 Contact
 If you need help:
 
