@@ -1,16 +1,38 @@
-# LinguaEar Support  
+d# LinguaEar Support  
 If you need help with LinguaEar, you're in the right place.
 
 ---
 
 ## 📱 App Overview
-LinguaEar provides:
-- Real-time language translation  
-- Speak-to-translate  
-- Translate-by-typing  
-- Auto-speaking translated text  
-- Apple Watch support  
-- Adjustable daily translation limits  
+LinguaEar is a conversation-first language assistant that helps you:
+
+- Speak in your language and hear it translated instantly  
+- Get natural replies to continue a conversation  
+- Practice speaking with real-time feedback (optional)  
+- Listen to phrases at learning or natural speeds  
+- Use Nearby Conversations to communicate across devices  
+- Translate by voice or text  
+- Hear translations spoken clearly  
+- Use Apple Watch for quick interactions  
+
+---
+
+## 🧠 Conversation Mode (NEW)
+LinguaEar now helps you **talk, not just translate**.
+
+When you speak:
+1. Your phrase is translated  
+2. A natural reply is suggested  
+3. You can:
+   - Listen to the phrase  
+   - Get a reply  
+   - Speak the reply  
+   - Continue the conversation  
+
+This allows you to:
+- Practice real conversations  
+- Learn what to say next  
+- Communicate even if you’re unsure  
 
 ---
 
@@ -19,34 +41,41 @@ LinguaEar provides:
 ### ❗ Nothing happens when I press Speak
 1. Ensure microphone permission is enabled:  
    **Settings → Privacy & Security → Microphone**
-2. Restart the app.
-3. Try speaking clearly and closely to the mic.
+2. Restart the app  
+3. Speak clearly and close to the mic  
 
 ---
 
 ### ❗ Translations fail or say "Error"
 - Check your network connection  
 - Try again in a few seconds  
-- Make sure Azure services aren’t blocked by VPN or firewall  
-- Reinstalling the app resets your daily translation limit  
+- Ensure VPN/firewall is not blocking services  
+- Reinstalling the app resets your daily limit  
 
 ---
 
-### ❗ Audio won’t play
-- Ensure mute mode is OFF  
-- Ensure your device volume is turned up  
-- On Apple Watch, playback uses the built-in speaker  
+### ❗ Replies don’t make sense
+- Try shorter or clearer phrases  
+- Avoid very long sentences  
+- The app works best with conversational input  
+
+---
+
+### ❗ Audio is too fast or unclear
+- Use the **Slow** playback option  
+- Ensure device volume is up  
+- Turn off mute mode  
 
 ---
 
 ### ❗ Daily limit reached
 LinguaEar free version includes a device-based limit.  
-It resets every 24 hours or when the app is reinstalled.
+It resets every 24 hours.
 
 ---
 
 ## 💬 Contact
-If you need personalized help:
+If you need help:
 
 **Email:** sjpbailey1961@icloud.com  
 Developer: **Steven Bailey**
@@ -55,13 +84,14 @@ Developer: **Steven Bailey**
 
 ## 🧩 Feature Requests
 We welcome feedback!  
-If there's a feature you’d like to see in the next update, email us anytime.
+Send ideas anytime — many features are built from user input.
 
 ---
 
 ## 🙏 Thank You
-Thank you for using LinguaEar!  
-Your support helps guide future improvements.the top.
-## 8. Changes to This Policy
+LinguaEar is designed to help you:
+- feel confident  
+- communicate naturally  
+- and keep conversations going  
 
-We may update this Privacy Policy from time to time. If we make significant changes, we will update the "Last updated" date above and may provide additional notice inside the App or on the App Store listing.
+Thank you for being part of it.
