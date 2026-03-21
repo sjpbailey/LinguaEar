@@ -101,38 +101,114 @@ Transform LinguaEar from a translator into a **conversation assistant**:
 ## 🔧 ACTIVE DEVELOPMENT NOTES — Conversation AI (v2.2.0-ai)
 
 ### CURRENT GOAL
-Stabilize and refine Conversation Mode into a natural, continuous AI-assisted conversation experience.
+Stabilize and refine Conversation Mode into a natural, continuous AI-assisted conversation experience that feels like talking to a person, not using a tool.
 
 ---
 
-### IMMEDIATE TASKS (IN ORDER)
+### WHAT WAS COMPLETED THIS SESSION
 
-1. **Fix Conversation Loop**
-   - After "Speak Reply", allow immediate continued input
-   - Do NOT reset conversation state
-   - Ensure user can speak again without restarting
+1. **Conversation Mode UI stabilized**
+   - ConversationPracticeView now builds and runs reliably
+   - Major brace/scope/body issues were resolved
+   - Buttons are now positioned near the mic and flow better
 
-2. **Remove Duplicate Buttons**
-   - Remove "Speak This..." button
-   - Keep only:
-     - Listen Phrase
-     - Reply
-     - Speak Reply
+2. **Control buttons cleaned up**
+   - Removed extra confusing speak button
+   - Current active controls are:
+     - Hear Translation
+     - Suggest Answer
+     - Hear Answer
+     - Clear
 
-3. **Simplify UI Text**
-   - Remove "I might say"
-   - Use natural phrasing only (no robotic prompts)
-   - Improve statusText guidance
+3. **Clear / Reset added**
+   - Clear button now resets:
+     - messages
+     - currentExpectedPhrase
+     - aiReply
+     - aiReplyTranslation
+     - loading state
+     - scoring remnants
+     - status text
 
-4. **Fix TTS Speed Consistency**
-   - Match ListenPractice behavior (.25 / .50)
-   - Verify TextToSpeechManager is not overriding rate
-   - Ensure Spanish voice is understandable at normal speed
+4. **Reply preview improved**
+   - Suggested answer now shows in target language
+   - Reverse translation back to native language was added under the suggested answer
+   - Preview now clears after commit so it does not look like a duplicate bug
 
-5. **Clean Conversation Flow**
-   - Speak → Translate → Reply → Continue
-   - No forced practice or scoring in main flow
-   - Practice remains optional and secondary
+5. **Playback state improved**
+   - Slow / Normal visual state now works correctly
+   - Current view uses .25 / .50 selection model like ListenPractice
+   - Remaining chipmunk-speed issue is likely inside TextToSpeechManager or Apple voice behavior, not this screen
+
+6. **Rule-based bot upgraded**
+   - AIConversationService was replaced with a smarter rule-based reply engine
+   - Added better categories for:
+     - greeting
+     - how are you
+     - love / affection
+     - thanks
+     - help
+     - directions
+     - compliments
+     - weather / day
+     - yes / no
+     - questions
+   - Reverse translation of bot replies is now working
+
+7. **Conversation Mode direction clarified**
+   - This screen is NOT ListenPractice
+   - This screen is a conversation helper / AI talker
+   - Scoring should remain in ListenPractice, not main Conversation flow
+
+---
+
+### IMMEDIATE TASKS (NEXT SESSION, IN ORDER)
+
+1. **Improve Bot Intelligence**
+   - Reduce generic overuse of:
+     - "Buena pregunta."
+     - "Entiendo. Cuéntame más."
+   - Add stronger intent buckets for:
+     - directions
+     - opinions
+     - plans
+     - weather
+     - compliments
+     - confirmations
+     - apologies
+     - small talk
+   - Add 3–5 reply variations per bucket
+
+2. **Improve Reply Quality**
+   - Make replies fit meaning more naturally
+   - Example goals:
+     - "What do you think?" → opinion-style answer
+     - "Where do you turn to get to the theater?" → directional answer
+     - "It’s a great day..." → weather/day answer
+   - Avoid smart-aleck generic fallback unless truly needed
+
+3. **Improve Conversation Continuity**
+   - Continue building true back-and-forth behavior
+   - Store light context:
+     - last user input
+     - last translated phrase
+     - last bot reply
+     - optional last intent
+   - Use that context to shape next reply
+
+4. **Clean Remaining UI Text**
+   - Replace old text such as:
+     - "I might say"
+     - "Tap Listen Phrase, Get Reply..."
+   - Make all wording match final controls:
+     - Hear Translation
+     - Suggest Answer
+     - Hear Answer
+
+5. **TTS Speed Investigation**
+   - Confirm TextToSpeechManager is not overriding rate unexpectedly
+   - Check whether selected Spanish voice is inherently too fast
+   - Clamp real utterance rates if necessary
 
 ---
 
@@ -140,7 +216,7 @@ Stabilize and refine Conversation Mode into a natural, continuous AI-assisted co
 
 6. **Auto-Detect Input Language**
    - Add toggle: I Speak = Auto / Manual
-   - Use existing ContentView auto-detect logic
+   - Reuse existing ContentView auto-detect logic
    - Apply to:
      - Conversation Mode
      - Nearby Conversations
@@ -160,41 +236,31 @@ Stabilize and refine Conversation Mode into a natural, continuous AI-assisted co
      - Output → ALWAYS convert to I Hear
 
    - Applies to:
-     - Conversation Mode (AI talker)
-     - Nearby Conversations (multi-device)
+     - Conversation Mode
+     - Nearby Conversations
      - Main Translator
-
-   - Example:
-     - I Speak: Auto
-     - I Hear: Spanish
-     - User speaks English → Spanish output
-     - User speaks Spanish → Spanish stays Spanish (or optionally normalized)
 
    - RULES:
      - Auto-detect ONLY affects input
      - I Hear ALWAYS controls output
      - Never override user’s I Hear selection
-     
-8. **Improve Reply System**
-   - Expand rule-based replies (short-term)
-   - Add "Another Reply" button
-   - Prepare for real AI backend integration (later)
 
-9. **Add Suggested Follow-Up (Optional)**
-   - Small hint under reply:
+8. **Improve Reply System Further**
+   - Add "Another Answer" button
+   - Add optional suggested follow-up:
      - "You could say..."
-   - Helps users continue conversation naturally
+   - Prepare for real AI backend integration later
 
 ---
 
 ### NEARBY CONVERSATIONS ALIGNMENT
 
-10. **Enhance Nearby Conversations**
+9. **Enhance Nearby Conversations**
    - Add auto-detect input option
    - Maintain per-device:
      - I Speak
      - I Hear
-   - Improve reliability and clarity of connection flow
+   - Improve connection clarity and reliability
 
 ---
 
@@ -202,25 +268,34 @@ Stabilize and refine Conversation Mode into a natural, continuous AI-assisted co
 
 - Conversation Mode ≠ ListenPractice
 - Do NOT mix scoring into main conversation flow
-- Keep UI simple (max 3 main buttons)
+- Keep UI simple and understandable
 - App should feel like talking to a person, not using a tool
-- Always test like a real user (not developer mindset)
+- Always test like a real user, not a developer
+- Bot preview should help, not confuse
+- Reverse translation should clarify, not clutter
 
 ---
 
 ### TESTING CHECKLIST
 
 - Can user:
-  - Speak → get translation → get reply → continue?
-- Does conversation continue without reset?
-- Are buttons clear and not redundant?
-- Is speech speed understandable?
+  - Speak → get translation → get suggested answer → hear answer?
+- Does reverse translation help user understand the bot reply?
+- Are buttons clear and non-redundant?
+- Does Clear reliably reset session state?
+- Is playback speed visually correct?
 - Does flow feel natural without explanation?
+- Are replies more specific than generic fallback?
 
 ---
 
 ### NOTES
 
-- Conversation Mode is NOT yet in App Store release (2.1.0)
-- Safe to iterate freely in v2.2.0-ai branch
-- App Store description will be updated AFTER feature is stable
+- Conversation Mode is still DEV ONLY and NOT in App Store release 2.1.0
+- Safe to iterate freely in `v2.2.0-ai`
+- App Store description/support text for AI helper should wait until feature is stable
+- Current milestone achieved:
+  - UI shell works
+  - controls work
+  - reverse translation works
+  - next focus = smarter bot brain
