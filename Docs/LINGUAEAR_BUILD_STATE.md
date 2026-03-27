@@ -162,7 +162,7 @@ Stabilize and refine Conversation Mode into a natural, continuous AI-assisted co
 
 ---
 
-### IMMEDIATE TASKS (NEXT SESSION, IN ORDER)
+### IMMEDIATE TASKS (NEXT SESSION, IN ORDER FOR AI)
 
 1. **Improve Bot Intelligence**
    - Reduce generic overuse of:
@@ -299,3 +299,53 @@ Stabilize and refine Conversation Mode into a natural, continuous AI-assisted co
   - controls work
   - reverse translation works
   - next focus = smarter bot brain
+
+  ### IMMEDIATE TASKS (NEXT SESSION, IN ORDER FOR v3.1-navigation)
+
+1. **Add Practice Speaking button to Welcome**
+   - Add a new visible button on `WelcomeView`
+   - Place it above `Nearby Conversations`
+   - Use a different color from Translate and Nearby
+   - Goal: expose Listen & Repeat as a first-class feature
+
+2. **Test Welcome → Listen & Repeat launch**
+   - Confirm the new button opens `ListenRepeatPracticeView`
+   - Do not remove old entry point yet
+   - Verify app still builds and runs cleanly
+
+3. **Comment out old Listen & Repeat entry in `ContentView`**
+   - Leave code in place, just `//` it out first
+   - Rebuild and test
+   - Confirm Practice is now reached from Welcome only
+
+4. **Fix navigation / back behavior**
+   - Current issue: Done/dismiss returns to `ContentView`
+   - Update presentation flow so Practice entered from Welcome returns correctly
+   - Prefer clean navigation behavior over temporary hacks
+
+5. **Add language control to Listen & Repeat**
+   - Practice should not rely only on language state from `ContentView`
+   - Add its own language selector or clean passed-in setting
+   - Goal: make Practice more independent and easier to launch directly
+
+6. **Keep Quick Phrases in `ContentView`**
+   - Do not move Quick Phrases
+   - Only expose Listen & Repeat separately from Welcome
+
+7. **Review Nearby Conversations flow after navigation changes**
+   - Keep current Nearby working
+   - Later goal: consider auto-detect for spoken language in Nearby
+   - Do not touch Nearby auto-detect until navigation and Practice are stable
+
+8. **Prepare screenshot-worthy navigation flow**
+   - Once Welcome + Practice are working cleanly, capture new screenshots
+   - Focus on clearer product story:
+     - Start Translating
+     - Practice Speaking
+     - Nearby Conversations
+
+### RELEASE TRACK NOTE
+
+- `v3.1-navigation` = navigation, Practice visibility, language control, Nearby polish, screenshot prep
+- `v4.0-ai` = AI conversation rebuild and future bot work
+- Do not mix v4 AI scope into v3.1 navigation work
