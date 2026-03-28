@@ -23,6 +23,28 @@ Focus:
 - Ensure consistent language model across app
 - Prepare foundation for AI (v4)
 
+## CORE APP STRUCTURE (CURRENT)
+
+LinguaEar now has three primary modes:
+
+1. Translate (ContentView)
+   - Real-time speech translation
+   - Quick phrases
+   - Paste & translate
+
+2. Practice (ListenRepeatPracticeView)
+   - Listen & repeat learning
+   - Category-based phrases
+   - Pronunciation helper (Romaji / chunking)
+
+3. Nearby Conversations
+   - Multi-device translation
+   - Per-device I Speak / I Hear
+   - Future: auto-detect input
+
+Design rule:
+- Each mode is independent but follows the same language model
+
 
 ---
 
@@ -339,28 +361,6 @@ Stabilize and refine Conversation Mode into a natural, continuous AI-assisted co
 - Do not mix v4 AI scope into v3.1 navigation work
 
 
-
-LinguaEar now has three primary modes:
-
-1. Translate (ContentView)
-   - Real-time speech translation
-   - Quick phrases
-   - Paste & translate
-
-2. Practice (ListenRepeatPracticeView)
-   - Listen & repeat learning## CORE APP STRUCTURE (CURRENT)
-   - Category-based phrases
-   - Pronunciation helper (Romaji / chunking)
-
-3. Nearby Conversations
-   - Multi-device translation
-   - Per-device I Speak / I Hear
-   - Future: auto-detect input
-
-Design rule:
-- Each mode is independent but follows the same language model
-
-
 ---
 
 ## FUTURE (v4 — AI Conversation Layer)
@@ -383,3 +383,22 @@ Notes:
 - This is NOT part of v3.1-navigation
 - This work remains in branch: v2.2.0-ai
 - Do not mix AI work into navigation / Practice branch
+
+
+## DAILY LOG — March 27, 2026
+
+- Worked on navigation + Practice separation
+- Added Practice to Welcome and removed from ContentView
+- Added language + category to Practice
+- Fixed romaji / chunking behavior
+- Validated limiter across views and Pro upgrade
+- Cleaned up navigation (native back arrow)
+
+Next:
+- Fix punctuation chunking
+- Add auto-detect to Nearby
+- UI polish + screenshots
+
+Notes:
+- Korean chunking works (not romaji)
+- Limiter clamps around 5–6 (acceptable for now)
