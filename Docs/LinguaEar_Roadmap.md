@@ -75,7 +75,7 @@
 
 ---
 
-## 5. Version 3 — Group & Multi-Device Features
+## 4. Version 3 — Group & Multi-Device Features
 - Multi-person conversation mode (2–4 users)
 - Nearby Conversations expansion
 - Per-device language settings (I Speak / I Hear)
@@ -139,5 +139,34 @@
 - Expand to iPad, Mac, Vision Pro
 
 ---
+
+## 3. Version 3 — Core Experience (CURRENT)
+
+### Goals
+- Make LinguaEar simple, clear, and usable immediately
+- Separate core modes cleanly:
+  - Translate
+  - Practice
+  - Nearby Conversations
+- Improve navigation and reduce confusion
+
+### Features
+- Welcome screen as entry point
+- Practice (Listen & Repeat) as a first-class feature
+- Category-based phrase practice
+- Language selection inside Practice
+- Nearby Conversations (multi-device translation)
+- Consistent I Speak / I Hear model across all modes
+
+### In Progress
+- Auto-detect input in Nearby Conversations
+- Phrase chunking cleanup (punctuation filtering)
+- UI polish and spacing consistency
+- Screenshot preparation for App Store
+
+### Outcome
+- App feels simple and obvious
+- Users understand what to do without instructions
+- Strong foundation for AI (v4)
 
 *Updated: March 2026*
