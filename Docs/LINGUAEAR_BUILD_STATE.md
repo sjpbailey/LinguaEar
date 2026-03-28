@@ -10,18 +10,19 @@
 - Platform: iOS + watchOS
 - Repo: LinguaEar (Private)
 - Primary Branch: main
-- Active Dev Branch: v2.2.0-ai
+- Active Dev Branch: v3.1-navigation
 
 ---
 
 ## CURRENT FOCUS
-Version 2.2 — Conversation Mode (AI Talker)
+Version 3.1 — Navigation, Practice, and Core UX Stabilization
 
-Transform LinguaEar from a translator into a **conversation assistant**:
-- Speak naturally
-- Translate
-- Suggest replies
-- Continue conversation
+Focus:
+- Clean navigation and user flow
+- Elevate Practice as a first-class feature
+- Ensure consistent language model across app
+- Prepare foundation for AI (v4)
+
 
 ---
 
@@ -40,45 +41,32 @@ Transform LinguaEar from a translator into a **conversation assistant**:
 ---
 
 ## WHAT IS COMPLETE
-- ✅ Translation pipeline (Azure)
-- ✅ Speech recognition working
-- ✅ TTS playback working
-- ✅ ConversationPracticeView UI functional
-- ✅ Reply suggestion system (rule-based)
-- ✅ Navigation to Conversation screen added
-- ✅ Support.md updated for Conversation Mode
-- ✅ Roadmap updated to include Conversation AI
+- ✅ Practice moved out of ContentView and into Welcome
+- ✅ Native navigation (removed custom back button)
+- ✅ Practice language selector added
+- ✅ Practice category system implemented
+- ✅ Romaji / chunking system working across languages
+- ✅ Limiter validated across views
 
 ---
 
 ## WHAT IS IN PROGRESS
-- ⏳ Conversation loop (continuous back-and-forth without reset)
-- ⏳ Remove duplicate / confusing buttons
-- ⏳ Improve reply naturalness (remove robotic phrasing)
-- ⏳ Fix TTS speed consistency across views
-- ⏳ Clarify UI flow (reduce cognitive load)
+- ⏳ Nearby Conversations auto-detect input
+- ⏳ Minor UI polish in Practice (spacing, labels)
+- ⏳ Phrase chunking cleanup (punctuation filtering)
+- ⏳ Final navigation polish consistency across devices
 
 ---
 
 ## NEXT STEPS (DO NOT SKIP ORDER)
-1. Fix duplicate "Speak" buttons (keep only one)
-2. Implement conversation loop:
-   - After reply → allow immediate continued input
-3. Clean UI labels:
-   - Remove "I might say"
-   - Simplify instructions
-4. Verify TTS speed matches ListenPractice
-5. Test real conversation flow (multi-turn)
-6. Decide when to introduce real AI backend (optional)
 
----
+1. Fix punctuation chunking in Practice (remove stray tokens like ",")
+2. Add auto-detect input option to Nearby Conversations
+3. Verify Nearby limiter behavior matches other views
+4. Polish Practice UI (spacing, clarity, labels)
+5. Capture new App Store screenshots (new navigation flow)
+6. Light usability testing (non-technical users)
 
-## FUTURE (NEAR TERM)
-- Auto-detect input language in Conversation Mode
-- Multi-language conversation support
-- “Another Reply” button (variation generation)
-- Suggested follow-up phrases
-- Context-aware replies (multi-turn memory)
 
 ---
 
@@ -300,7 +288,7 @@ Stabilize and refine Conversation Mode into a natural, continuous AI-assisted co
   - reverse translation works
   - next focus = smarter bot brain
 
-  ### IMMEDIATE TASKS (NEXT SESSION, IN ORDER FOR v3.1-navigation)
+  ### COMPLETED (v3.1-navigation Navigation Work)
 
 1. **Add Practice Speaking button to Welcome**
    - Add a new visible button on `WelcomeView`
@@ -349,3 +337,49 @@ Stabilize and refine Conversation Mode into a natural, continuous AI-assisted co
 - `v3.1-navigation` = navigation, Practice visibility, language control, Nearby polish, screenshot prep
 - `v4.0-ai` = AI conversation rebuild and future bot work
 - Do not mix v4 AI scope into v3.1 navigation work
+
+
+
+LinguaEar now has three primary modes:
+
+1. Translate (ContentView)
+   - Real-time speech translation
+   - Quick phrases
+   - Paste & translate
+
+2. Practice (ListenRepeatPracticeView)
+   - Listen & repeat learning## CORE APP STRUCTURE (CURRENT)
+   - Category-based phrases
+   - Pronunciation helper (Romaji / chunking)
+
+3. Nearby Conversations
+   - Multi-device translation
+   - Per-device I Speak / I Hear
+   - Future: auto-detect input
+
+Design rule:
+- Each mode is independent but follows the same language model
+
+
+---
+
+## FUTURE (v4 — AI Conversation Layer)
+
+Conversation AI will transform LinguaEar from a translator into a true conversation assistant.
+
+Planned capabilities:
+- Speak naturally → translate → suggest replies → continue conversation
+- Multi-turn conversation with context memory
+- Intent-based reply generation
+- “Another Reply” variations
+- Suggested follow-up phrases
+
+Future enhancements:
+- Auto-detect input language in Conversation Mode
+- Multi-language conversation support
+- Context-aware replies across multiple turns
+
+Notes:
+- This is NOT part of v3.1-navigation
+- This work remains in branch: v2.2.0-ai
+- Do not mix AI work into navigation / Practice branch
