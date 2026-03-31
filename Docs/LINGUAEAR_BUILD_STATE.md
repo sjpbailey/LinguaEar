@@ -413,9 +413,9 @@ I’ll give you a clean section you can paste at the bottom.
 🚀 RELEASE STATUS — Version 3.1.0
 
 ## CURRENT STATE
-	•	Version 3.1.0 (Build 1) uploaded to App Store Connect
-	•	Submitted for TestFlight Beta Review
-	•	Testers added (internal group ready)
+•	Version 3.1.0 (Build 1) uploaded to App Store Connect
+•	Submitted for TestFlight Beta Review
+•	Testers added (internal group ready)
 
 ⸻
 
