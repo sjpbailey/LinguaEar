@@ -420,63 +420,63 @@ I’ll give you a clean section you can paste at the bottom.
 ⸻
 
 ## WHAT WAS COMPLETED
-	•	Navigation fully restructured and stabilized
-	•	Practice mode elevated to primary feature (from Welcome)
-	•	Nearby Conversations validated and stable
-	•	Translation pipeline verified (manual + auto-detect)
-	•	Auto-response mode tested and functional
-	•	Daily limiter tested across multiple views
-	•	Screenshot set created and finalized:
-	•	Nearby Conversations (4)
-	•	Practice (3)
-	•	Translator (3)
-	•	Quick Phrases (2)
+•	Navigation fully restructured and stabilized
+•	Practice mode elevated to primary feature (from Welcome)
+•	Nearby Conversations validated and stable
+•	Translation pipeline verified (manual + auto-detect)
+•	Auto-response mode tested and functional
+•	Daily limiter tested across multiple views
+•	Screenshot set created and finalized:
+•	Nearby Conversations (4)
+•	Practice (3)
+•	Translator (3)
+•	Quick Phrases (2)
 
 ⸻
 
 ## WHAT IS BEING VALIDATED (TestFlight)
-	•	Real-device Nearby Conversations (multi-phone)
-	•	Practice flow across languages and categories
-	•	Translator behavior (auto-detect ON/OFF)
-	•	Auto-response usability
-	•	UI/UX clarity for new users
-	•	Limiter behavior under normal usage
+•	Real-device Nearby Conversations (multi-phone)
+•	Practice flow across languages and categories
+•	Translator behavior (auto-detect ON/OFF)
+•	Auto-response usability
+•	UI/UX clarity for new users
+•	Limiter behavior under normal usage
 
 ⸻
 
 ## NEXT STEP (AFTER TESTFLIGHT APPROVAL)
-	1.	Install and test build via TestFlight
-	2.	Final UI/UX sanity pass (real-user perspective)
-	3.	Move to App Store Distribution
-	4.	Replace screenshots with new finalized set
-	5.	Finalize App Store metadata (title, subtitle, description)
-	6.	Submit for App Review
+1.	Install and test build via TestFlight
+2.	Final UI/UX sanity pass (real-user perspective)
+3.	Move to App Store Distribution
+4.	Replace screenshots with new finalized set
+5.	Finalize App Store metadata (title, subtitle, description)
+6.	Submit for App Review
 
 ⸻
 
 ## FUTURE TRACKS (LOCKED)
-	•	Localization (Welcome + Quick Phrases + core UI)
-	•	Pro / Professional tier:
-	•	AI Conversation Mode (v4)
-	•	Advanced Watch features
-	•	Smarter phrase system (multi-language input)
+•	Localization (Welcome + Quick Phrases + core UI)
+•	Pro / Professional tier:
+•	AI Conversation Mode (v4)
+•	Advanced Watch features
+•	Smarter phrase system (multi-language input)
 
 ⸻
 
 ## NOTES
-	•	This release marks transition from:
-	•	“Translator app”
-	•	→ Communication + Learning platform
-	•	Do not introduce new features until 3.1.0 is fully validated and released
+•	This release marks transition from:
+•	“Translator app”
+•	→ Communication + Learning platform
+•	Do not introduce new features until 3.1.0 is fully validated and released
 
 ⸻
 
 🟢 Why this is important
 
 ## This does 3 things:
-	1.	You can resume instantly in any new chat
-	2.	You don’t lose release context
-	3.	You stay disciplined (no scope creep)
+1.	You can resume instantly in any new chat
+2.	You don’t lose release context
+3.	You stay disciplined (no scope creep)
 
 ⸻
 ### March 30th 2026
