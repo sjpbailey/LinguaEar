@@ -539,6 +539,44 @@ I’ll give you a clean section you can paste at the bottom.
 	3.	Implement conversation loop (multi-turn)
 	4.	Add mic availability guard (Mac stability fix)
 	5.	Improve Conversation Practice UX (flow + realism)
+   🚧 PARALLEL TRACKS (ADDED)
+
+🌍 Localization (IN PROGRESS)
+	• Expand beyond English-only UI
+	• Localize:
+	• Welcome screen
+	• Quick Phrases (all categories)
+	• Core UI labels (I Speak / I Hear / buttons)
+	• Goal:
+	• App feels native in each language
+	• Strategy:
+	• Start with phrase system → expand to UI strings
+
+⸻
+
+🔄 Nearby Conversations — Auto Detect (PLANNED)
+	• Add auto-detect spoken language in Nearby mode
+	• Remove need for strict I Speak setting
+	• Improve real-world usability:
+	• Mixed-language conversations
+	• Faster onboarding (no setup friction)
+	• Maintain per-device “I Hear” output
+
+⸻
+
+⌚ Watch 2.0 — WOW FEATURE (PLANNED)
+	• Upgrade Watch app from:
+	• simple translator → real-time conversation tool
+
+	• Goals:
+	• Walkie-talkie style interaction
+	• Push-to-talk translation between devices
+	• Fast response loop (low latency)
+	• Minimal UI (tap, speak, hear)
+
+	• Role in product:
+	• Key differentiator for Pro tier
+	• “Show people → instant wow”
 
 ⸻
 
