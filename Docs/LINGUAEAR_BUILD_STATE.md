@@ -541,7 +541,7 @@ I’ll give you a clean section you can paste at the bottom.
 	5.	Improve Conversation Practice UX (flow + realism)
    🚧 PARALLEL TRACKS (ADDED)
 
-🌍 Localization (IN PROGRESS)
+## 🌍 Localization (IN PROGRESS)
 	• Expand beyond English-only UI
 	• Localize:
 	• Welcome screen
@@ -554,7 +554,7 @@ I’ll give you a clean section you can paste at the bottom.
 
 ⸻
 
-🔄 Nearby Conversations — Auto Detect (PLANNED)
+## 🔄 Nearby Conversations — Auto Detect (PLANNED)
 	• Add auto-detect spoken language in Nearby mode
 	• Remove need for strict I Speak setting
 	• Improve real-world usability:
@@ -564,7 +564,7 @@ I’ll give you a clean section you can paste at the bottom.
 
 ⸻
 
-⌚ Watch 2.0 — WOW FEATURE (PLANNED)
+## ⌚ Watch 2.0 — WOW FEATURE (PLANNED)
 	• Upgrade Watch app from:
 	• simple translator → real-time conversation tool
 
