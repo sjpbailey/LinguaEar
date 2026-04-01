@@ -115,6 +115,7 @@
 - Tagged releases:
   - `v2.1.0`
   - `v2.2.0-ai`
+  - `v4.1.0-Localization`
   - future versions
 
 ---
@@ -170,3 +171,118 @@
 - Strong foundation for AI (v4)
 
 *Updated: March 2026*
+
+⸻
+
+## 11. Version 4.1 — AI Conversation (FOUNDATION BUILD)
+
+Goals
+•	Introduce real conversational intelligence
+•	Move from:
+•	translation tool ❌
+→ to
+•	conversation partner ✅
+•	Start simple: English-only AI first (controlled environment)
+
+⸻
+
+Core Features
+
+## 🧠 AI Conversation Practice (NEW)
+•	Natural back-and-forth conversation
+•	User speaks → AI responds naturally
+•	No translation required (pure English mode)
+•	Focus on:
+•	flow
+•	realism
+•	confidence building
+
+⸻
+
+## 💬 Smart Reply Engine (v1)
+•	Context-aware responses (basic memory of last input)
+•	Variation system (avoid repeating same replies)
+•	Tone:
+•	friendly
+•	simple
+•	conversational (not robotic)
+
+⸻
+
+## 🎯 Conversation Loop
+•	Continuous interaction:
+•	Speak → AI responds → Speak again
+•	No reset between turns
+•	Lightweight session memory (last 1–3 messages)
+
+⸻
+
+## UI Additions
+
+New Entry Point
+•	“Conversation Practice” button (already added ✅)
+•	Dedicated screen (ConversationPracticeView)
+
+## Controls
+•	Tap to speak
+•	Suggest Answer
+•	Hear Translation (optional later)
+•	Clear conversation
+
+⸻
+
+Platform Behavior
+
+## iPhone
+•	Full experience (primary platform)
+
+## Mac
+•	Enable with microphone present
+•	Graceful fallback if no mic:
+•	disable mic button
+•	show message
+
+⸻
+
+# In Progress (Next Steps)
+•	Replace static responses with AIConversationService logic
+•	Improve response selection (remove obvious patterns)
+•	Add basic memory (last user + last AI reply)
+•	Tune response tone (short, natural)
+
+⸻
+
+## Next Enhancements (4.1.x)
+•	“Another Reply” button (variation generation)
+•	Adjustable personality:
+•	casual
+•	professional
+•	helpful tutor
+•	Speech speed matching (AI adapts to user speed)
+•	Error tolerance (handle broken English better)
+
+⸻
+
+## Future Expansion (4.2+)
+•	Multi-language AI conversation
+•	Translate + respond (hybrid mode)
+•	Real-time bilingual conversation assistant
+•	Voice-only continuous mode (hands-free)
+
+⸻
+
+🧠 ADD TO “TECH NOTES / TODO”
+
+## ⚙️ Stability
+•	Detect microphone availability (Mac fix)
+•	Prevent crash when no input device
+•	Disable mic UI when unavailable
+
+⸻
+
+## 🧪 Testing
+•	iPhone real conversation flow
+•	Mac + headphones validation
+•	Nearby + AI coexistence (no conflicts)
+
+*Updated: April 1st 2026*
