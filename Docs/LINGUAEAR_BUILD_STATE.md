@@ -479,14 +479,87 @@ I’ll give you a clean section you can paste at the bottom.
 3.	You stay disciplined (no scope creep)
 
 ⸻
-### March 30th 2026
 
-👍 My take
+ *March 30th 2026*
 
-👉 This is one of your cleanest checkpoints yet
-👉 You are now operating like a real release cycle
 
 ⸻
 
-When you come back after TestFlight:
-👉 we’ll update this again + finalize submission 👍
+### 🚀 RELEASE UPDATE — Version 3.1.0 (APPROVED & LIVE)
+
+## CURRENT STATE
+
+• Version 3.1.0 approved by App Review
+• Status: Ready for Distribution → LIVE
+• Verified on:
+• iPhone (App Store + device install)
+• Mac (desktop install + runtime validation)
+
+⸻
+
+## WHAT WAS COMPLETED (POST-SUBMISSION)
+
+• App successfully passed App Review (fast approval)
+• Final screenshots accepted (no rejection issues)
+• App Store metadata validated live
+• Navigation and UI confirmed stable in production build
+• New Welcome screen + button layout verified
+• Conversation Practice entry point added (v4 foundation)
+
+⸻
+
+## VALIDATION RESULTS
+
+• iPhone:
+• Translation working (manual + auto-detect)
+• Practice mode working
+• Nearby Conversations working across devices
+• Mac:
+• App runs successfully
+• Nearby Conversations confirmed working
+• Microphone-dependent features require input device (expected behavior)
+
+⸻
+
+## KNOWN ISSUES / NOTES
+
+• Mac:
+• App requires microphone input device (headphones or external mic)
+• No-mic condition can cause failure → needs graceful handling
+• UI:
+• Button sizing issue resolved (modifier scope fix)
+• Dev:
+• Xcode diff mode caused false duplicate line behavior (resolved)
+
+⸻
+
+## NEXT STEP (ACTIVE DEVELOPMENT — v4.1)
+	1.	Begin AI Conversation integration (English-only first)
+	2.	Replace static replies with AIConversationService
+	3.	Implement conversation loop (multi-turn)
+	4.	Add mic availability guard (Mac stability fix)
+	5.	Improve Conversation Practice UX (flow + realism)
+
+⸻
+
+## FUTURE TRACKS (UPDATED)
+
+• AI Conversation Mode now ACTIVE (v4.1 branch)
+• Localization expansion (phrases + welcome)
+• Pro tier refinement (AI + limits + features)
+
+⸻
+
+## NOTES
+
+• This marks transition from:
+• “Working release”
+→ “Live product with active user experience”
+• First successful full cycle:
+• Build → Submit → Approve → Live → Validate
+• Foundation for AI now in place (Conversation Practice entry)
+
+⸻
+
+*April 1st 2026*
+
